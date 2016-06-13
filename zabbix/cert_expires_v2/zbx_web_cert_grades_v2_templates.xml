@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2016-06-13T22:38:24Z</date>
+    <date>2016-06-13T23:20:45Z</date>
     <groups>
         <group>
             <name>Supplementary Services</name>
@@ -260,30 +260,30 @@
                             <name>{#NAME} SSL Certificate Grade: {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
-                            <priority>4</priority>
+                            <priority>2</priority>
                             <description>Value = Grade&#13;
-1 = Grade A&#13;
-2 = Grade B&#13;
-3 = Grade C&#13;
-4 = Grade D&#13;
-5 = Grade E&#13;
-6 = Grade F</description>
+1 = Grade F&#13;
+2 = Grade E&#13;
+3 = Grade D&#13;
+4 = Grade C&#13;
+5 = Grade B&#13;
+6 = Grade A</description>
                             <type>0</type>
                             <dependencies/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{SSL Certificate Checks:web_cert_expires.sh[1,{#URL}].last()}&gt;3</expression>
+                            <expression>{SSL Certificate Checks:web_cert_expires.sh[1,{#URL}].last()}&lt;3</expression>
                             <name>{#NAME} SSL Certificate Low Grade: {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
-                            <priority>5</priority>
+                            <priority>4</priority>
                             <description>Value = Grade&#13;
-1 = Grade A&#13;
-2 = Grade B&#13;
-3 = Grade C&#13;
-4 = Grade D&#13;
-5 = Grade E&#13;
-6 = Grade F</description>
+1 = Grade F&#13;
+2 = Grade E&#13;
+3 = Grade D&#13;
+4 = Grade C&#13;
+5 = Grade B&#13;
+6 = Grade A</description>
                             <type>0</type>
                             <dependencies/>
                         </trigger_prototype>
