@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2016-06-13T23:20:45Z</date>
+    <date>2016-06-13T23:33:39Z</date>
     <groups>
         <group>
             <name>Supplementary Services</name>
@@ -217,7 +217,7 @@
                     <trigger_prototypes>
                         <trigger_prototype>
                             <expression>{SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&lt;7 and {SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&gt;3</expression>
-                            <name>{#NAME} SSL Certificate Expires in {ITEM.LASTVALUE}</name>
+                            <name>{#NAME} SSL Certificate Expires in: {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
                             <priority>4</priority>
@@ -227,7 +227,7 @@
                         </trigger_prototype>
                         <trigger_prototype>
                             <expression>{SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&lt;30 and {SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&gt;7</expression>
-                            <name>{#NAME} SSL Certificate Expires in {ITEM.LASTVALUE}</name>
+                            <name>{#NAME} SSL Certificate Expires in: {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
                             <priority>3</priority>
@@ -237,7 +237,7 @@
                         </trigger_prototype>
                         <trigger_prototype>
                             <expression>{SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&lt;90 and {SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&gt;30</expression>
-                            <name>{#NAME} SSL Certificate Expires in {ITEM.LASTVALUE}</name>
+                            <name>{#NAME} SSL Certificate Expires in: {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
                             <priority>2</priority>
@@ -247,7 +247,7 @@
                         </trigger_prototype>
                         <trigger_prototype>
                             <expression>{SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&lt;120 and {SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&gt;90</expression>
-                            <name>{#NAME} SSL Certificate Expires in {ITEM.LASTVALUE}</name>
+                            <name>{#NAME} SSL Certificate Expires in: {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
                             <priority>1</priority>
