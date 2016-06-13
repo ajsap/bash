@@ -1,0 +1,16 @@
+{
+  "data":[
+        {"{#NAME}": "Carrot Rewards Web", "{#URL}": "carrotrewards.net"},
+        {"{#NAME}": "Columbus Loyalty", "{#URL}": "loyalty.columbuscoffee.co.nz"},
+        {"{#NAME}": "drnz.tr4ns.com", "{#URL}": "drnz.tr4ns.com"},
+        {"{#NAME}": "Farmers Giftcard", "{#URL}": "checkmygiftcard.co.nz"},
+        {"{#NAME}": "giftcards.westfield.co.nz", "{#URL}": "giftcards.westfield.co.nz"},
+        {"{#NAME}": "giveagiftcard.co.nz", "{#URL}": "giveagiftcard.co.nz"},
+        {"{#NAME}": "Hampsta.co.nz", "{#URL}": "www.hampsta.co.nz"},
+        {"{#NAME}": "Kupidpos.net", "{#URL}": "kupidpos.net"},
+        {"{#NAME}": "subcard.subway.co.uk", "{#URL}": "subcard.subway.co.uk"},
+        {"{#NAME}": "tr4ns1.tr4ns.com", "{#URL}": "tr4ns1.tr4ns.com"},
+        {"{#NAME}": "Transactor.co.nz Wildcard", "{#URL}": "transactortech.co.nz"},
+        {"{#NAME}": "writeprice.co.nz", "{#URL}": "writeprice.co.nz"}
+        ]
+}
