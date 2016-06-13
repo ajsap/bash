@@ -1,7 +1,7 @@
 #!/bin/bash
 # web_cert_grades.sh v0.9-RC | Andy Saputra <yacsap@gmail.com>
 # put this script on your ExternalScripts=/usr/lib/zabbix/externalscripts (/etc/zabbix/zabbix_server.conf)
-# import zbx_web_cert_expires_templates.xml, then Host group: Supplementary Services and Template: SSL Certificate Checks will appears.
+# import zbx_web_cert_grades_templates.xml, then Host group: Supplementary Services and Template: SSL Certificate Checks will appears.
 # Original Idea: https://blog.chr.istoph.de/ssllabs-overall-rating-zabbix-check/
 #
 #     domain=$1
