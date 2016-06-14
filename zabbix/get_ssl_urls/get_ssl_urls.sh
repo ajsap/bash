@@ -1,6 +1,7 @@
 #! /bin/bash
 # get_ssl_urls.sh v1.0-STABLE | Andy Saputra <yacsap@gmail.com>
 # put this script on your ExternalScripts=/usr/lib/zabbix/externalscripts (/etc/zabbix/zabbix_server.conf)
+# add: UserParameter=discover.sslhosts,/usr/lib/zabbix/externalscripts/get_ssl_urls.sh (/etc/zabbix/zabbix_agentd.conf)
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 DATE=`date +%Y-%m-%d:%H:%M:%S`
