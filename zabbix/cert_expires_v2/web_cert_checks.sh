@@ -1,10 +1,10 @@
 #!/bin/bash
-# web_cert_expires.sh v2.2-STABLE | Andy Saputra <yacsap@gmail.com>
+# web_cert_checks.sh v2.2-STABLE | Andy Saputra <yacsap@gmail.com>
 # It combines both web_cert_expires.sh and web_cert_grades.sh function.
-# Usage1: web_cert_expires.sh 1 google.com - checks the SSL certificate grade
-# Usage2: web_cert_expires.sh google.com - checks the SSL certificate expiration
+# Usage1: web_cert_checks.sh 1 google.com - checks the SSL certificate grade
+# Usage2: web_cert_checks.sh google.com - checks the SSL certificate expiration
 # put this script on your ExternalScripts=/usr/lib/zabbix/externalscripts (/etc/zabbix/zabbix_server.conf)
-# import zbx_web_cert_grades_v2_templates.xml, then Host group: Supplementary Services and Template: SSL Certificate Checks will appears.
+# import zbx_web_cert_checks_v2_templates.xml, then Host group: Supplementary Services and Template: SSL Certificate Checks will appears.
 
 ACTION="$1"
 
