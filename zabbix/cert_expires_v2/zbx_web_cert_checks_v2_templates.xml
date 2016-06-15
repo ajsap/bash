@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <zabbix_export>
     <version>3.0</version>
-    <date>2016-06-13T23:20:45Z</date>
+    <date>2016-06-15T23:31:57Z</date>
     <groups>
         <group>
             <name>Supplementary Services</name>
@@ -51,7 +51,7 @@
                         <conditions/>
                     </filter>
                     <lifetime>30</lifetime>
-                    <description>Get the SSL URLs that need to be checked SSL certificate validity</description>
+                    <description>Get the SSL URLs that need to be checked SSL certificate validity as well as their grades.</description>
                     <item_prototypes>
                         <item_prototype>
                             <name>HTTP on {#NAME}</name>
@@ -139,8 +139,8 @@
                             <snmp_community/>
                             <multiplier>0</multiplier>
                             <snmp_oid/>
-                            <key>web_cert_expires.sh[1,{#URL}]</key>
-                            <delay>120</delay>
+                            <key>web_cert_checks.sh[1,{#URL}]</key>
+                            <delay>0</delay>
                             <history>30</history>
                             <trends>0</trends>
                             <status>0</status>
@@ -156,7 +156,7 @@
                             <snmpv3_privprotocol>0</snmpv3_privprotocol>
                             <snmpv3_privpassphrase/>
                             <formula>1</formula>
-                            <delay_flex/>
+                            <delay_flex>60/1-7,03:00-03:02</delay_flex>
                             <params/>
                             <ipmi_sensor/>
                             <data_type>0</data_type>
@@ -179,12 +179,12 @@
                             <snmp_community/>
                             <multiplier>1</multiplier>
                             <snmp_oid/>
-                            <key>web_cert_expires.sh[{#URL}]</key>
-                            <delay>30</delay>
+                            <key>web_cert_checks.sh[{#URL}]</key>
+                            <delay>3600</delay>
                             <history>30</history>
                             <trends>30</trends>
                             <status>0</status>
-                            <value_type>3</value_type>
+                            <value_type>0</value_type>
                             <allowed_hosts/>
                             <units>days</units>
                             <delta>0</delta>
@@ -216,7 +216,7 @@
                     </item_prototypes>
                     <trigger_prototypes>
                         <trigger_prototype>
-                            <expression>{SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&lt;7 and {SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&gt;3</expression>
+                            <expression>{SSL Certificate Checks:web_cert_checks.sh[{#URL}].last()}&lt;7 and {SSL Certificate Checks:web_cert_checks.sh[{#URL}].last()}&gt;3</expression>
                             <name>{#NAME} SSL Certificate Expires in {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
@@ -226,7 +226,7 @@
                             <dependencies/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&lt;30 and {SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&gt;7</expression>
+                            <expression>{SSL Certificate Checks:web_cert_checks.sh[{#URL}].last()}&lt;30 and {SSL Certificate Checks:web_cert_checks.sh[{#URL}].last()}&gt;7</expression>
                             <name>{#NAME} SSL Certificate Expires in {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
@@ -236,7 +236,7 @@
                             <dependencies/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&lt;90 and {SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&gt;30</expression>
+                            <expression>{SSL Certificate Checks:web_cert_checks.sh[{#URL}].last()}&lt;90 and {SSL Certificate Checks:web_cert_checks.sh[{#URL}].last()}&gt;30</expression>
                             <name>{#NAME} SSL Certificate Expires in {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
@@ -246,7 +246,7 @@
                             <dependencies/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&lt;120 and {SSL Certificate Checks:web_cert_expires.sh[{#URL}].last()}&gt;90</expression>
+                            <expression>{SSL Certificate Checks:web_cert_checks.sh[{#URL}].last()}&lt;120 and {SSL Certificate Checks:web_cert_checks.sh[{#URL}].last()}&gt;90</expression>
                             <name>{#NAME} SSL Certificate Expires in {ITEM.LASTVALUE}</name>
                             <url/>
                             <status>0</status>
@@ -256,34 +256,42 @@
                             <dependencies/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{SSL Certificate Checks:web_cert_expires.sh[1,{#URL}].last()}=3</expression>
-                            <name>{#NAME} SSL Certificate Grade: {ITEM.LASTVALUE}</name>
+                            <expression>{SSL Certificate Checks:web_cert_checks.sh[1,{#URL}].regexp(C)}=1</expression>
+                            <name>{#NAME} SSL Certificate Grade C</name>
                             <url/>
                             <status>0</status>
                             <priority>2</priority>
-                            <description>Value = Grade&#13;
-1 = Grade F&#13;
-2 = Grade E&#13;
-3 = Grade D&#13;
-4 = Grade C&#13;
-5 = Grade B&#13;
-6 = Grade A</description>
+                            <description/>
                             <type>0</type>
                             <dependencies/>
                         </trigger_prototype>
                         <trigger_prototype>
-                            <expression>{SSL Certificate Checks:web_cert_expires.sh[1,{#URL}].last()}&lt;3</expression>
-                            <name>{#NAME} SSL Certificate Low Grade: {ITEM.LASTVALUE}</name>
+                            <expression>{SSL Certificate Checks:web_cert_checks.sh[1,{#URL}].regexp(D)}=1</expression>
+                            <name>{#NAME} SSL Certificate Low Grade D</name>
                             <url/>
                             <status>0</status>
                             <priority>4</priority>
-                            <description>Value = Grade&#13;
-1 = Grade F&#13;
-2 = Grade E&#13;
-3 = Grade D&#13;
-4 = Grade C&#13;
-5 = Grade B&#13;
-6 = Grade A</description>
+                            <description/>
+                            <type>0</type>
+                            <dependencies/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{SSL Certificate Checks:web_cert_checks.sh[1,{#URL}].regexp(E)}=1</expression>
+                            <name>{#NAME} SSL Certificate Low Grade E</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>4</priority>
+                            <description/>
+                            <type>0</type>
+                            <dependencies/>
+                        </trigger_prototype>
+                        <trigger_prototype>
+                            <expression>{SSL Certificate Checks:web_cert_checks.sh[1,{#URL}].regexp(F)}=1</expression>
+                            <name>{#NAME} SSL Certificate Low Grade F</name>
+                            <url/>
+                            <status>0</status>
+                            <priority>4</priority>
+                            <description/>
                             <type>0</type>
                             <dependencies/>
                         </trigger_prototype>
