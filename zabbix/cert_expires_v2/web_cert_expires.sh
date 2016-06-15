@@ -1,5 +1,5 @@
 #!/bin/bash
-# web_cert_expires.sh v2.0-STABLE | Andy Saputra <yacsap@gmail.com>
+# web_cert_expires.sh v2.2-STABLE | Andy Saputra <yacsap@gmail.com>
 # It combines both web_cert_expires.sh and web_cert_grades.sh function.
 # Usage1: web_cert_expires.sh 1 google.com - checks the SSL certificate grade
 # Usage2: web_cert_expires.sh google.com - checks the SSL certificate expiration
@@ -40,12 +40,12 @@ for word in $(sed 's/,/\n/g' $tmp | grep grade | awk -F '"' '{print $4}'); do
         if [ $word == "F" ]; then f=$((f+1)); fi
 done
 rm $tmp
-if [ $f -gt 0 ]; then echo "6"
-elif [ $e -gt 0 ]; then echo "5"
-elif [ $d -gt 0 ]; then echo "4"
-elif [ $c -gt 0 ]; then echo "3"
-elif [ $b -gt 0 ]; then echo "2"
-else echo "1"
+if [ $f -gt 0 ]; then echo "F"
+elif [ $e -gt 0 ]; then echo "E"
+elif [ $d -gt 0 ]; then echo "D"
+elif [ $c -gt 0 ]; then echo "C"
+elif [ $b -gt 0 ]; then echo "B"
+else echo "A"
 fi
 
 else
@@ -58,7 +58,7 @@ then
         PORT="443"
 fi
 
-EXPIRES=$(echo | /usr/bin/openssl s_client -connect $FQDN:$PORT 2>/dev/null | /usr/bin/openssl x509 -noout -enddate | cut -d'=' -f2 | xargs -0 -L1 -I input /bin/date -d'input' +'%s')
+EXPIRES=$(echo | /usr/bin/openssl s_client -connect $FQDN:$PORT 2>/dev/null | /usr/bin/openssl x509 -noout -enddate 2>/dev/null| cut -d'=' -f2 | xargs -0 -L1 -I input /bin/date -d'input' +'%s')
 NOW=$(date +'%s')
 
 let DIFF_SEC=$EXPIRES-$NOW
